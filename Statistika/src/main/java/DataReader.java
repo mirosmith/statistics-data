@@ -20,7 +20,7 @@ public class DataReader {
 		this.fileName = fileName;
 	}	
 	
-	public List<String> readFile() throws IOException {
+	public List<String> readFile() {
 		
 		List<String> listOfWords = new LinkedList<String>();
 		
@@ -35,7 +35,7 @@ public class DataReader {
 			
 			String line;
 			
-			while ((line = bfr.readLine()) != null) {
+			while ((line = bfr.readLine()) != null) {				
 				
 				String[] lineArray = line.split(" ");
 				
@@ -58,7 +58,11 @@ public class DataReader {
 			e.printStackTrace();
 		}
 		finally {
-			bfr.close();
+			try {
+				bfr.close();
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}
 		}		
 		
 		return listOfWords;
