@@ -2,6 +2,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Trida vytvari statistiku 
+ * pomoci objektu DataReader a nacteneho souboru 
+ *
+ */
 public class Logic {
 	
 	private DataReader dataR;
@@ -10,6 +15,7 @@ public class Logic {
 		this.dataR = dataR;
 	}
 	
+	// ze ziskaneho seznamu slov vytvori mapu (statistiku)
 	public Map<String, Integer> createStatistics() {
 		
 		Map<String, Integer> mapStats = new HashMap<String, Integer>();
