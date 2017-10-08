@@ -4,6 +4,14 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 
+ * Nastavuje nazev souboru, ze ktereho
+ * se budou nacitat data
+ * 
+ * Umoznuje ulozit data do seznamu
+ *
+ */
 public class DataReader {
 	
 	private String fileName;
@@ -39,9 +47,10 @@ public class DataReader {
 				
 				String[] lineArray = line.split(" ");
 				
-				for (String s : lineArray) {
+				for (String s : lineArray) {					
 					
-					s = s.toLowerCase().trim();
+					// removes a non-word characters from string 
+					s = s.replaceAll("\\W", "").toLowerCase().trim();					
 					
 					if (s.isEmpty()) {
 						continue;
