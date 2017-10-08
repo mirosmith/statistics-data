@@ -3,6 +3,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * 
+ * Umoznuje vypsat vysledky do konzole
+ * nebo do souboru
+ *
+ */
 public class Presentation {
 	
 	private Logic logic;
@@ -15,6 +21,7 @@ public class Presentation {
 		return logic.createStatistics();
 	}
 	
+	// vystup do konzole
 	public void outputConsole() {
 		
 		if (logic == null) {
@@ -31,6 +38,9 @@ public class Presentation {
 		
 	}
 	
+	// pomocna metoda, ktera zkontroluje spravny nazev souboru
+	// nazev musi mit koncovku ".txt"
+	// nazev musi zacinat pismenem
 	private boolean outputFileCheck(String fName) {
 		
 		if (fName == null) {
@@ -65,6 +75,7 @@ public class Presentation {
 		return true;
 	}
 	
+	// vystup do souboru
 	public void outputFile(String outputFileName) {
 		
 		if (logic == null) {
