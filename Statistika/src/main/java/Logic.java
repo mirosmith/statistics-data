@@ -93,9 +93,8 @@ public class Logic {
 			for (Path item : ds) {	
 				String s = item.toString();
 				
-				if ((!s.endsWith(".txt")) &&
-					(!s.endsWith(".pdf"))) {
-					System.out.println("unsupprted file: " + s);
+				if (!s.endsWith(".txt")) {
+					System.out.println("unprocessed file: " + s);
 					continue;
 				}		
 				filePaths.add(item);				

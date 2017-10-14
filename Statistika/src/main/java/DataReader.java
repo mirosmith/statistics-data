@@ -1,16 +1,13 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * 
+/** 
  * Nastavuje nazev souboru, ze ktereho
- * se budou nacitat data
- * 
- * Umoznuje ulozit data do seznamu
- *
+ * se budou nacitat data 
  */
 public class DataReader {
 	
@@ -24,6 +21,7 @@ public class DataReader {
 		return fileName;
 	}	
 
+	// ze souboru vytvari seznam (List) slov
 	public List<String> readFile(Path path) {		
 		
 		List<String> listOfWords = new LinkedList<String>();
@@ -52,7 +50,7 @@ public class DataReader {
 			}
 			
 		} 
-		catch (Exception e) {
+		catch (IOException e) {
 			System.err.println(e);
 		}				
 		
