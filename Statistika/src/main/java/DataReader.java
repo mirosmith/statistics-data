@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,32 +14,21 @@ import java.util.List;
  */
 public class DataReader {
 	
-	private String fileName;
+	private String fileName;	
 
 	public DataReader(String fileName) {		
-		this.fileName = fileName;
+		this.fileName = fileName;		
 	}
 
 	public String getFileName() {
 		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
 	}	
-	
-	public List<String> readFile() {
+
+	public List<String> readFile(Path path) {		
 		
 		List<String> listOfWords = new LinkedList<String>();
 		
-		if (fileName == null || fileName.isEmpty()) {
-			return listOfWords;
-		}
-		
-		BufferedReader bfr = null;
-		
-		try {
-			bfr = new BufferedReader(new FileReader(fileName));
+		try (BufferedReader bfr = Files.newBufferedReader(path)) {			
 			
 			String line;
 			
@@ -49,7 +38,7 @@ public class DataReader {
 				
 				for (String s : lineArray) {					
 					
-					// removes a non-word characters from string 
+					// vymaze interpunkcni znaky 
 					s = s.replaceAll("\\W", "").toLowerCase().trim();					
 					
 					if (s.isEmpty()) {
@@ -64,15 +53,8 @@ public class DataReader {
 			
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				bfr.close();
-			} catch (IOException e) {				
-				e.printStackTrace();
-			}
-		}		
+			System.err.println(e);
+		}				
 		
 		return listOfWords;
 		
