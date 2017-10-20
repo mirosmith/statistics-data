@@ -5,7 +5,9 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Utility {	
+public final class Utility {	
+	
+	private Utility() {}
 	
 	// metoda, ktera zkontroluje spravny nazev a existenci vstupniho souboru
 	// nazev musi mit koncovku ".txt"	
@@ -51,15 +53,22 @@ public class Utility {
 		fName = fName.trim();
 
 		if (!fName.endsWith(".txt")) {
-		   System.out.println("unsupported format: "+ fName + ", (must be .txt format)");
+			
+		   System.out.println("unsupported format: "+ fName + ", (must be .txt format)");		   
 		   return false;
-		} else {
+		   
+		} 
+		else {
+			
 			String nameBeforeSuffix = fName.substring(0, fName.indexOf(".")).trim();
 
 			if (nameBeforeSuffix.isEmpty()) {
-				System.out.println("file name must contain letters: " + fName);
+				
+				System.out.println("file name must contain letters: " + fName);				
 				return false;
+				
 			} else {
+				
 				char firstLetter = nameBeforeSuffix.charAt(0);
 				int intFirstLetter = (int) firstLetter;
 
